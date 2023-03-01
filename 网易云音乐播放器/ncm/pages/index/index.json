@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "recommend-songs-list": "../../components/recommendSongsList/recommendSongsList",
+    "recommend-songs": "../../components/recommendSongs/recommendSongs",
+    "cd-player": "../../components/cdPlayer/cdPlayer"
+  },
+  "navigationBarTitleText": "推荐"
+}

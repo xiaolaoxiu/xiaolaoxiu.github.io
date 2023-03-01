@@ -1,0 +1,5 @@
+module.exports = function(ar){
+  return ar.map(function(item){
+    return item.name
+  }).join(",")
+}

@@ -1,0 +1,32 @@
+<view class="login">
+  <!-- 切换登录模式 -->
+  <view class="mode">
+    <radio-group bindchange="modeChange">
+      <radio checked value="phone">手机号登录</radio>
+      <radio value="qr">二维码登录</radio>
+    </radio-group>
+  </view>
+  <view>
+    <!-- 手机号 -->
+    <view class="phone-box" wx:if="{{mode === 'phone'}}">
+      <view class="group-input">
+        <label for="phone">手机</label>
+        <input type="text" id="phone" placeholder="请输入手机号码" model:value="{{phone}}" />
+      </view>
+      <view class="group-input">
+        <label for="phone">密码</label>
+        <input type="text" id="phone" placeholder="请输入密码" type="password" model:value="{{password}}" />
+      </view>
+      <view>
+        <button type="primary" bindtap="phoneLogin">登录</button>
+      </view>
+    </view>
+    <!-- 二维码 -->
+    <view class="qr-box" wx:if="{{mode === 'qr'}}">
+      <image show-menu-by-longpress="{{true}}" src="{{imgData}}"></image>
+    </view>
+  </view>
+</view>
+
+
+

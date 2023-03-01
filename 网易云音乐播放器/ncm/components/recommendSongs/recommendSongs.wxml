@@ -1,0 +1,23 @@
+<view class="songs">
+  <view class="songs-header">
+    <slot></slot>
+  </view>
+  <view class="songs-content">
+    <view class="songs-item" wx:for="{{songs}}" wx:key="id" id="{{item.id}}" bindtap="songsItemTap">
+      <view>
+        <image class="songs-img" src="{{item.al.picUrl}}"></image>
+      </view>
+      <view class="songs-info">
+        <view class="songs-name">{{item.name}}</view>
+        <view class="songs-ar">
+          演唱：
+          <!-- <text wx:for="{{item.ar}}" wx:key="id" wx:for-item="ar">{{ar.name}}{{index===item.ar.length-1?'':','}}</text> -->
+          <text>{{ar(item.ar)}}</text>
+        </view>
+        <view class="songs-al">专辑：{{item.al.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<wxs src="../../wxs/ar.wxs" module="ar"></wxs>

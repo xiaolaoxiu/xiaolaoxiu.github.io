@@ -1,0 +1,32 @@
+.login{
+  background-color: rgb(250, 227, 216);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mode{
+  margin: 40rpx 0;
+  text-align: center;
+}
+
+.phone-box{
+  padding: 20rpx 100rpx;
+
+}
+
+.group-input{
+  display: flex;
+  border-bottom: 2rpx solid pink;
+  margin: 80rpx 0;
+}
+
+.group-input input{
+  padding-left: 40rpx;
+  font-size: 35rpx;
+}
+
+.qr-box image{
+  width: 350rpx;
+  height: 350rpx;
+  margin: 200rpx;
+}

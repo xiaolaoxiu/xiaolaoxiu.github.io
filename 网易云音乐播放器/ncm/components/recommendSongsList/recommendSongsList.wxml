@@ -1,0 +1,27 @@
+<view class="songs-list">
+  <!-- 标题 -->
+  <view class="songs-list-header">
+    <slot></slot>
+  </view>
+  <view class="songs-list-content">
+    <!-- 歌单 -->
+    <view class="songs-list-item" wx:for="{{songsList}}" wx:key="id" id="{{item.id}}" bindtap="songsListItemTap">
+      <!-- 歌单图片 -->
+      <view>
+        <image class="songs-list-img" lazy-load="{{true}}" src="{{item.picUrl}}"></image>
+      </view>
+      <!-- 歌单详情 -->
+      <view class="songs-list-info">
+        <view class="songs-list-name">{{item.name}}</view>
+        <view class="songs-list-count">
+          <text>播放：{{wan(item.playCount)}}</text>
+          <text>曲数：{{item.trackCount}}</text>
+        </view>
+        <view class="song-list-updatetime">{{time(item.trackNumberUpdateTime)}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<wxs src="../../wxs/wan.wxs" module="wan"></wxs>
+<wxs src="../../wxs/time.wxs" module="time"></wxs>

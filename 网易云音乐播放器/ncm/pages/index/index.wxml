@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="index">
+  <!-- 按钮 -->
+  <view class="index-item">
+    <button 
+      type="primary" 
+      class="my-list-btn"
+      bindtap="playMyList"
+    >播放我的歌单</button>
+  </view>
+  <!-- 推荐歌单 -->
+  <view class="index-item">
+    <recommend-songs-list songsList="{{recommendSongsList}}">
+      推荐歌单
+    </recommend-songs-list>    
+  </view>
+  <!-- 每日推荐歌曲 -->
+  <view class="index-item">
+    <recommend-songs songs="{{recommendSongs}}">每日推荐歌曲</recommend-songs>
+  </view>
+  <!-- cd 旋转 -->
+  <view>
+    <cd-player></cd-player>
+  </view>
+</view>

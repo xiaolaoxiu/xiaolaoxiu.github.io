@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "recommend-songs": "../../components/recommendSongs/recommendSongs",
+    "cd-player": "../../components/cdPlayer/cdPlayer"
+  }
+}

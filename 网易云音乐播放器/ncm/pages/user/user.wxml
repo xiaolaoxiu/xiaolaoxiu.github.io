@@ -1,0 +1,14 @@
+<view class="user" style="background-image: url({{userInfo?userInfo.backgroundUrl:''}})">
+  <!-- 用户头像 -->
+  <view class="avator-box">
+    <image wx:if="{{userInfo}}" class="avator" src="{{userInfo.avatarUrl}}"></image>
+    <image wx:else class="avator" src="../../images/timg.jpg"></image>
+  </view>
+  <!-- 用户昵称 -->
+  <view class="username-box">
+    <view class="username" wx:if="{{userInfo}}">{{userInfo.nickname}}</view>
+    <view class="username" wx:else>
+      <button bindtap="goToLogin">请点击登陆</button>
+    </view>
+  </view>
+</view>

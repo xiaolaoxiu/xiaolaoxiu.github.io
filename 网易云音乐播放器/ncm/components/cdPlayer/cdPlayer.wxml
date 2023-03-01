@@ -1,0 +1,3 @@
+<view class="cd-player" bindtap="goToPlayer">
+  <image class="cd-player-img {{isPlaying?'running':'paused'}}" src="{{picUrl}}"></image>
+</view>

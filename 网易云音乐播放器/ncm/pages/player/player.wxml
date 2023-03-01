@@ -1,0 +1,98 @@
+<view class="player">
+  <!-- 显示歌词 or 图片 -->
+  <view class="player-lyric-pic" bindlongpress="changeLyricOrPic">
+    <!-- 歌词 -->
+    <view class="player-lyic {{isShowLyric?'show':'hide'}}">
+      <scroll-view 
+        scroll-y="{{true}}" 
+        scroll-with-animation="{{true}}" 	
+        enhanced="{{true}}" 
+        show-scrollbar="{{false}}"
+        scroll-into-view="line{{line - 4}}"
+      >
+        <view 
+          wx:for="{{lyric}}" 
+          wx:key="index" 
+          id="line{{index}}"
+          class="{{index === line?'line-active':''}}"
+          data-time="{{item.time}}"
+          bindtap="lyricLineTap"
+        >
+          {{item.content || '--'}}
+        </view>
+      </scroll-view>
+    </view>
+    <!-- 图片   -->
+    <view class="player-pic {{!isShowLyric?'show':'hide'}}">
+      <image class="{{isPlaying?'running':'paused'}}" src="{{picUrl}}"></image>
+    </view>
+  </view>
+  <!-- 歌名和演唱者 -->
+  <view class="player-name-ar">
+    <view class="name">{{name}}</view>
+    <view class="ar">{{ars(ar)}}</view>
+  </view>
+  <!-- 控制器 -->
+  <view class="player-control">
+    <!-- 进度条 -->
+    <view>
+      <slider value="{{ct}}" step="{{0.1}}" max="{{dt/1000}}" bindchanging="changePlayerProgress"></slider>
+    </view>
+    <!-- 时间 -->
+    <view>{{seconds(ct)}}/{{seconds(dt/1000)}}</view>
+    <!-- 上/下/播放/暂停 -->
+    <view class="player-control-ctl">
+      <image src="../../images/prev.png" bindtap="prevTap"></image>
+      <image src="../../images/{{isPlaying?'pause':'play'}}.png" bindtap="playOrPauseTap"></image>
+      <image src="../../images/next.png" bindtap="nextTap"></image>
+    </view>
+    <!-- 播放模式 -->
+    <view class="player-control-mode">
+      <image 
+        class="{{mode==='loop'?'player-control-mode-active':''}}" 
+        src="../../images/loop.png" 
+        data-mode="loop"
+        bindtap="changeMode">
+      </image>
+      <image 
+        class="{{mode==='random'?'player-control-mode-active':''}}" 
+        src="../../images/random.png" 
+        data-mode="random"
+        bindtap="changeMode">
+      </image>
+      <image 
+        class="{{mode==='single'?'player-control-mode-active':''}}" 
+        src="../../images/sing-loop.png" 
+        data-mode="single"
+        bindtap="changeMode">
+      </image>
+      <image src="../../images/{{isIn?'star-h':'star'}}.png" bindtap="starTap"></image>
+    </view>
+  </view>
+  <!-- 播放列表 -->
+  <view class="player-list" style="bottom:{{isOpen?'0':'-622rpx'}}">
+    <!-- 蒙板 -->
+    <view class="player-list-mask" style="display:{{isOpen?'block':'none'}}" bindtap="changeIsOpen"></view>
+    <!-- 黑条 -->
+    <view class="player-list-bar" bindtap="changeIsOpen">
+      <image class="{{isPlaying?'running':'paused'}}" src="{{picUrl}}"></image>
+    </view>
+    <!-- 歌曲列表 -->
+    <view class="player-list-content">
+      <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}">
+        <view class="player-list-item" wx:for="{{playList}}" wx:key="id" bindtap="listItemTap" id="{{item.id}}" data-index="{{index}}">
+          <view class="player-list-name">
+            <image wx:if="{{index === currentIndex}}" class="{{isPlaying?'running':'paused'}}" src="../../images/cd.png" ></image>
+            <text>{{item.name}}</text>
+          </view>
+          <view class="player-list-ar">
+            <text>{{ars(item.ar)}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
+
+<wxs src="../../wxs/ar.wxs" module="ars"></wxs>
+<wxs src="../../wxs/seconds.wxs" module="seconds"></wxs>
